@@ -1,7 +1,10 @@
 import StartUp from "./startUp";
+import { normalizePort, onError, onListening } from './utils/utils';
 
-let port = process.env.PORT || "3050";
+let port = normalizePort(process.env.port || 3050);
+const host = process.env.host || '127.0.0.1';
 
 StartUp.app.listen(port, function() {
-  console.log(`servidor executando na porta ${port}`);
-});
+}).on('error', onError(port)).on(
+  'listening', onListening(host, port)
+);

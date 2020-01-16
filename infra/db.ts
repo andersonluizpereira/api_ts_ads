@@ -1,10 +1,11 @@
 import * as mongoose from "mongoose";
+import * as path from 'path';
+const env: string = process.env.NODE_ENV || 'development';
+let config = require(path.resolve(`${__dirname}./../config/config.json`))[env];
 
 class Database {
-  private DB_URL = "mongodb://localhost:27017/db_portal";
-
   createConnection() {
-    mongoose.connect(this.DB_URL);
+    mongoose.connect(config.url);
   }
 }
 

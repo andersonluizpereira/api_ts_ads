@@ -27,6 +27,7 @@ class StartUp {
   enableCors() {
     const options: cors.CorsOptions = {
       methods: "GET,OPTIONS,PUT,POST,DELETE",
+      allowedHeaders: ['Content-Type', 'Authorization', 'Accept-Enconding'],
       origin: "*"
     };
 
