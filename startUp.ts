@@ -8,6 +8,7 @@ import Auth from "./infra/auth";
 
 import uploads from "./infra/uploads";
 import newsRouter from "./router/newsRouter";
+import userRouter from "./router/userRouter";
 
 class StartUp {
   public app: express.Application;
@@ -52,10 +53,10 @@ class StartUp {
         console.log(error);
       }
     });
-
     this.app.use(Auth.validate);
     //news
     this.app.use("/", newsRouter);
+    this.app.use("/", userRouter);
   }
 }
 

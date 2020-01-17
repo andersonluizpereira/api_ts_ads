@@ -1,5 +1,4 @@
 import * as jwt from "jsonwebtoken";
-import Configs from "./configs";
 import { JWT_SECRET } from '../utils/utils';
 
 class Auth {

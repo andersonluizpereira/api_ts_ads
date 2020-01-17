@@ -1,6 +1,19 @@
+import UserSchema from "../models/userSchema";
+import * as Jwt from "jsonwebtoken";
 
 export const normalizePort = (val: number | string): number => {
     return (typeof val === 'string') ? parseInt(val) : val;
+}
+
+export const generatedToken = (email: String, name: String ): String => {
+    let payload = {
+        iss: "omundoedos.net",
+        iat: new Date().getSeconds(),
+        exp: new Date().setMinutes(60),
+        name: name,
+        email: email
+    };
+    return Jwt.sign(payload, JWT_SECRET);
 }
 
 export const onError = (port: Number) => {
