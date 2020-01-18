@@ -51,14 +51,14 @@ class StartUp {
     this.app.use(bodyParser.urlencoded({ extended: false }));
   }
 
-  routes() {
+   routes() {
     this.app.route("/").get((req, res) => {
       res.send({ versao: "0.0.1" });
     });
 
-    this.app.route("/api/generatedtoken").post((req, res) => {
+    this.app.route("/api/generatedtoken").post(async (req, res) => {
       try {
-        userService.login(req.body)
+        await userService.login(req.body)
           .then(user => res.send(generatedToken(req.body.email,req.body.name)))
           .catch(error => console.error.bind(console, `Error ${error}`));
       } catch (error) {
@@ -66,9 +66,9 @@ class StartUp {
       }
     });
 
-    this.app.route("/api/v1/user").post((req, res) => {
+    this.app.route("/api/v1/user").post(async (req, res) => {
       try {
-        userService.create(req.body)
+        await userService.create(req.body)
           .then(user =>
 
               res.json({
@@ -84,7 +84,7 @@ class StartUp {
     });
 
     this.app.use(Auth.validate);
-    this.app.route("/uploads/:email").post(uploads.single("thumbnail"), (req, res) => {
+    this.app.route("/uploads/:email").post(uploads.single("thumbnail"),async (req, res) => {
       try {
         let url = "http://127.0.0.1:3050"
         console.log(url)
@@ -93,8 +93,7 @@ class StartUp {
           thumbnail: `${url}/files/${req.file.originalname}-${path.extname(req.file.originalname)}`,
           email: req.params.email
         }
-        console.log(images)
-        imageService.create(images);
+        await imageService.create(images);
         res.send("Arquivo enviado com sucesso");
       } catch (error) {
         console.log(error);

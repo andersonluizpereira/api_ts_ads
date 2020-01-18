@@ -2,27 +2,27 @@ import UserRepository from "../repository/userRepository";
 
 class UserService {
 
-  login(user) {
-    return UserRepository.findOne({
+  async login(user) {
+    return await UserRepository.findOne({
       'email': user.email,
       'password': user.password
     });
   }
 
-  create(user) {
+  async create(user) {
     user.createdAt = new Date()
     user.updatedAt = new Date()
     user.active = true
-    return UserRepository.create(user);
+    return await UserRepository.create(user);
   }
 
-  update(_id, user) {
+  async update(_id, user) {
     user.updatedAt = new Date()
-    return UserRepository.findByIdAndUpdate(_id, user);
+    return await UserRepository.findByIdAndUpdate(_id, user);
   }
 
-  delete(_id) {
-    return UserRepository.findByIdAndRemove(_id);
+  async delete(_id) {
+    return await UserRepository.findByIdAndRemove(_id);
   }
 }
 

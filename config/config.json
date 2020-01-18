@@ -1,6 +1,8 @@
 {
     "development": {
-      "url": "mongodb://localhost:27017/db_portal"
+      "url": "mongodb://localhost:27017/db_portal",
+      "redis_url": "localhost",
+      "redis_port": 6379
     },
     "test": {
       "username": "root",

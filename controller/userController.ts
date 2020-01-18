@@ -5,11 +5,10 @@ import Helper from "../infra/helper";
 
 class UserController {
   
-  update(req, res) {
+  async update(req, res) {
     const _id = req.params.id;
     let user = req.body;
-
-    userService.update(_id, user)
+    await userService.update(_id, user)
       .then(user =>
         Helper.sendResponse(
           res,
@@ -20,9 +19,9 @@ class UserController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  delete(req, res) {
+  async delete(req, res) {
     const _id = req.params.id;
-    userService.delete(_id)
+    await userService.delete(_id)
       .then(() =>
         Helper.sendResponse(res, HttpStatus.OK, "Usuario deletada com sucesso!")
       )

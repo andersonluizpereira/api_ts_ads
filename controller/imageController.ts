@@ -2,33 +2,47 @@ import ImageService from "../services/imageService";
 import * as HttpStatus from "http-status";
 
 import Helper from "../infra/helper";
+import * as path from 'path';
+const env: string = process.env.NODE_ENV || 'development';
+let config = require(path.resolve(`${__dirname}./../config/config.json`))[env];
+import * as redis from "redis";
 
 class ImageController {
   
-  get(req, res) {
-    ImageService.get()
-      .then(image => Helper.sendResponse(res, HttpStatus.OK, image))
-      .catch(error => console.error.bind(console, `Error ${error}`));
+  async get(req, res) {
+    let client = redis.createClient(config.redis_port,config.redis_url)
+
+    client.get("image", await function(err, reply) {
+      if (reply) {
+        Helper.sendResponse(res, HttpStatus.OK, JSON.parse(reply))        
+      } else {
+        ImageService.get()
+        .then(image => { 
+          client.set("image", JSON.stringify(image))
+          Helper.sendResponse(res, HttpStatus.OK, image) })
+        .catch(error => console.error.bind(console, `Error ${error}`));
+      }
+    });
   }
 
-  getById(req, res) {
+  async getById(req, res) {
     const _id = req.params.id;
 
-    ImageService.getById(_id)
+    await ImageService.getById(_id)
       .then(image => Helper.sendResponse(res, HttpStatus.OK, image))
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  getByIdEmail(req, res) {
-    ImageService.getByIdEmail(req.params.id, req.params.email)
+  async getByIdEmail(req, res) {
+    await ImageService.getByIdEmail(req.params.id, req.params.email)
       .then(image => Helper.sendResponse(res, HttpStatus.OK, image))
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  create(req, res) {
+  async create(req, res) {
     let vm = req.body;
 
-    ImageService.create(vm)
+    await ImageService.create(vm)
       .then(image =>
         Helper.sendResponse(
           res,
@@ -39,11 +53,11 @@ class ImageController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  update(req, res) {
+  async update(req, res) {
     const _id = req.params.id;
     let image = req.body;
 
-    ImageService.update(_id, image)
+    await ImageService.update(_id, image)
       .then(image =>
         Helper.sendResponse(
           res,
@@ -54,10 +68,10 @@ class ImageController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
-  delete(req, res) {
+  async delete(req, res) {
     const _id = req.params.id;
 
-    ImageService.delete(_id)
+    await ImageService.delete(_id)
       .then(() =>
         Helper.sendResponse(res, HttpStatus.OK, "Image deletada com sucesso!")
       )

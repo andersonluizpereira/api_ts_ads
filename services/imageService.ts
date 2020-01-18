@@ -1,28 +1,28 @@
 import ImageRepository from "../repository/imageRepository";
 
 class ImageService {
-  get() {
-    return ImageRepository.find({});
+  async get() {
+    return await ImageRepository.find({});
   }
 
-  getByIdEmail(_id,email) {
-    return ImageRepository.findOne({_id, email});
+  async getByIdEmail(_id,email) {
+    return await ImageRepository.findOne({_id, email});
   }
 
-  getById(_id) {
-    return ImageRepository.findById(_id);
+  async getById(_id) {
+    return await ImageRepository.findById(_id);
   }
 
-  create(images) {
-    return ImageRepository.create(images);
+  async create(images) {
+    return await ImageRepository.create(images);
   }
 
-  update(_id, images) {
-    return ImageRepository.findByIdAndUpdate(_id, images);
+  async update(_id, images) {
+    return await ImageRepository.findByIdAndUpdate(_id, images);
   }
 
-  delete(_id) {
-    return ImageRepository.findByIdAndRemove(_id);
+  async delete(_id) {
+    return await ImageRepository.findByIdAndRemove(_id);
   }
 }
 
