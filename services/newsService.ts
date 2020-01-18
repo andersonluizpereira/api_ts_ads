@@ -5,6 +5,10 @@ class NewsService {
     return NewsRepository.find({});
   }
 
+  getByIdEmail(_id,email) {
+    return NewsRepository.findOne({_id, email});
+  }
+
   getById(_id) {
     return NewsRepository.findById(_id);
   }

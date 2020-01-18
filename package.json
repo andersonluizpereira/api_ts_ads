@@ -24,7 +24,8 @@
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
     "ts-node": "^7.0.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "validator": "^12.1.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",

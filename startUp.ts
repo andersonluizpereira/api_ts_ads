@@ -9,6 +9,10 @@ import Auth from "./infra/auth";
 import uploads from "./infra/uploads";
 import newsRouter from "./router/newsRouter";
 import userRouter from "./router/userRouter";
+import { generatedToken } from './utils/utils';
+import userService from "./services/userService";
+import Helper from "./infra/helper";
+import * as HttpStatus from "http-status";
 
 class StartUp {
   public app: express.Application;
@@ -53,6 +57,34 @@ class StartUp {
         console.log(error);
       }
     });
+
+    this.app.route("/api/generatedtoken").post((req, res) => {
+      try {
+        userService.login(req.body)
+          .then(user => res.send(generatedToken(req.body.email,req.body.name)))
+          .catch(error => console.error.bind(console, `Error ${error}`));
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
+    this.app.route("/api/v1/user").post((req, res) => {
+      try {
+        userService.create(req.body)
+          .then(user =>
+
+              res.json({
+                status: HttpStatus.OK,
+                message: "Usuário cadastrado com sucesso!",
+                data: req.body
+              })
+          )
+          .catch(error => console.error.bind(console, `Error ${error}`));
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
     this.app.use(Auth.validate);
     //news
     this.app.use("/", newsRouter);

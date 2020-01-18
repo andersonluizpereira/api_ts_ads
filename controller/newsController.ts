@@ -19,6 +19,12 @@ class NewsController {
       .catch(error => console.error.bind(console, `Error ${error}`));
   }
 
+  getByIdEmail(req, res) {
+    NewsService.getByIdEmail(req.params.id, req.params.email)
+      .then(news => Helper.sendResponse(res, HttpStatus.OK, news))
+      .catch(error => console.error.bind(console, `Error ${error}`));
+  }
+
   create(req, res) {
     let vm = req.body;
 
