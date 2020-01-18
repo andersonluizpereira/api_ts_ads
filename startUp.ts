@@ -31,6 +31,7 @@ class StartUp {
     this._db = new Database();
     this._db.createConnection();
     this.app.use('/files', express.static(path.resolve(__dirname, '..', 'uploads')));
+    this.app.use('/exports', express.static(process.cwd() + '/exports'))
     this.middler();
     this.routes();
   }
