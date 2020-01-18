@@ -4,6 +4,7 @@ import * as cors from "cors";
 import uploads from "./infra/uploads";
 import imageService from "./services/imageService";
 import * as path from "path";
+import * as compression from "compression";
 
 
 import Database from "./infra/db";
@@ -49,6 +50,7 @@ class StartUp {
     this.enableCors();
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(compression());
   }
 
    routes() {
