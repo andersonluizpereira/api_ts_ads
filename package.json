@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docker_start": "docker-compose -f docker/docker-compose.yml up -d",
+    "docker_stop": "docker-compose -f docker/docker-compose.yml down",
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc -w",
-    "start": "NODE_ENV=development JWT_SECRET=batman node_modules/.bin/nodemon --delay 5 dist/program"
+    "start": "NODE_ENV=development JWT_SECRET=batman node_modules/.bin/nodemon --delay 5 dist/program",
+    "server": "NODE_ENV=production JWT_SECRET=ironman node_modules/.bin/nodemon --delay 5 dist/program"
   },
   "keywords": [],
   "author": "",

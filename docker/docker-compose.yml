@@ -1,19 +1,11 @@
 version: "3"
 services:
   redis:
-    container_name: redis13
+    container_name: news-redis1
     image: redis
     ports:
       - "6379:6379"
-    appendonly:
-      - "no"
-  api:
-    image: tadrianonet/api-ts
-    ports:
-      - "80:3050"
-    links:
-      - link-db
-  link-db:
+  mongodb:
     image: tutum/mongodb
     ports:
       - "27017:27017"

@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "e0e2815c-7286-44f4-928a-88db8f7b3a98",
+		"name": "api_ts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3050/api/v1/news",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NDEsImV4cCI6MTU3OTExODQ0MTE1MSwibmFtZSI6IlRoaWFnbyBBZHJpYW5vIiwiZW1haWwiOiJ0YWRyaWFuby5uZXRAZ21haWwuY29tIn0.l0RwFQ4P2YjaexLZDrtMs8HFhXeMiBtCKX3DC9af8Iw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3050/api/v1/news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"api",
+						"v1",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3050/api/v1/news",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NDEsImV4cCI6MTU3OTExODQ0MTE1MSwibmFtZSI6IlRoaWFnbyBBZHJpYW5vIiwiZW1haWwiOiJ0YWRyaWFuby5uZXRAZ21haWwuY29tIn0.l0RwFQ4P2YjaexLZDrtMs8HFhXeMiBtCKX3DC9af8Iw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"hat\":\"Ano de 2018 ficará marcado pelo sucesso dos atletas nacionais no Circuito Mundial de Surfe\",\n\t\"title\":\"Com título de Medina e 11 na elite, 'Brazilian Storm' mostra que veio para ficar\",\n\t\"text\":\"A tempestade brasileira no surfe mostrou que não é passageira e representa a consolidação da modalidade no País. 'Brazilian Storm' é como os surfistas do Brasil são chamados no circuito. O ano de 2018 ficará marcado pelo sucesso dos atletas nacionais em diversas parte do mundo e tudo isso gera expectativa para 2019 e 2020, quando o surfe estreará no programa olímpico dos Jogos de Tóquio Gabriel Medina conquistou seu bicampeonato mundial no mesmo dia que Jesse Mendes ganhou a Tríplice Coroa Havaiana, uma honraria para os surfistas. Das 11 etapas realizadas no Circuito, os atletas brasileiros ganharam nove - nas últimas cinco temporadas três títulos do Mundial da elite ficaram nas mãos de surfistas brasileiros.\",\n\t\"author\":\"Da Redação, com Estadão Conteúdo\",\n\t\"img\":\"http://imagem.com.br/f_446243.jpg\",\n\t\"link\":\"https://esporte.uol.com.br/noticia/100000944120/com-bi-de-medina-e-11-na-elite-brazilian-storm-veio-para-ficar.html\",\n\t\"active\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3050/api/v1/news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"api",
+						"v1",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3050/api/generatedtoken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NDUsImV4cCI6MTU3OTMwMjA0NTE0MSwibmFtZSI6IlRoaWFnbyBBZHJpYW5vIiwiZW1haWwiOiJ0YWRyaWFuby5uZXRAZ21haWwuY29tIn0.L_23QwDNamP52ib7TUmXsS_6ouB_ZVqhyx0RBzpvnqI",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"andy2903.alp@gmail.com\",\n  \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3050/api/generatedtoken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"api",
+						"generatedtoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3050/api/v1/user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NDUsImV4cCI6MTU3OTMwMjA0NTE0MSwibmFtZSI6IlRoaWFnbyBBZHJpYW5vIiwiZW1haWwiOiJ0YWRyaWFuby5uZXRAZ21haWwuY29tIn0.L_23QwDNamP52ib7TUmXsS_6ouB_ZVqhyx0RBzpvnqI",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Anderson Pereira\",\n  \"email\": \"andy2902.alp@gmail.com\",\n  \"password\": \"123456\",\n  \"photo\": \"nt\",\n  \"active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3050/api/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:3050/files/0.jpg-1579309289780.jpg",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NTksImV4cCI6MTU3OTMxMjg1OTIwMSwiZW1haWwiOiJhbmR5MjkwMy5hbHBAZ21haWwuY29tIn0.px5MpQfsEQZvfEPzYOXsQc5EIzsqPqgrxl9bUG5NgrE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:3050/files/0.jpg-1579309289780.jpg",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3050",
+					"path": [
+						"files",
+						"0.jpg-1579309289780.jpg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3050/uploads/andy2903.alp@gmail.com",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NTksImV4cCI6MTU3OTMxMjg1OTIwMSwiZW1haWwiOiJhbmR5MjkwMy5hbHBAZ21haWwuY29tIn0.px5MpQfsEQZvfEPzYOXsQc5EIzsqPqgrxl9bUG5NgrE",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "thumbnail",
+							"value": null,
+							"type": "file"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3050/uploads/andy2903.alp@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"uploads",
+						"andy2903.alp@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3050/api/v1/news",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NDUsImV4cCI6MTU3OTMwMjA0NTE0MSwibmFtZSI6IlRoaWFnbyBBZHJpYW5vIiwiZW1haWwiOiJ0YWRyaWFuby5uZXRAZ21haWwuY29tIn0.L_23QwDNamP52ib7TUmXsS_6ouB_ZVqhyx0RBzpvnqI",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3050/api/v1/news",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"api",
+						"v1",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3050/api/v1/news/export/tocsv",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvbXVuZG9lZG9zLm5ldCIsImlhdCI6NDUsImV4cCI6MTU3OTMwMjA0NTE0MSwibmFtZSI6IlRoaWFnbyBBZHJpYW5vIiwiZW1haWwiOiJ0YWRyaWFuby5uZXRAZ21haWwuY29tIn0.L_23QwDNamP52ib7TUmXsS_6ouB_ZVqhyx0RBzpvnqI",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3050/api/v1/news/export/tocsv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3050",
+					"path": [
+						"api",
+						"v1",
+						"news",
+						"export",
+						"tocsv"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
