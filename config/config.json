@@ -4,6 +4,11 @@
       "redis_url": "localhost",
       "redis_port": 6379
     },
+    "production": {
+      "url": "mongodb+srv://acpereira:g4ZhkDj9fZTIGSa6@cluster0-9jbi1.mongodb.net/test?retryWrites=true&w=majority",
+      "redis_url": "localhost",
+      "redis_port": 6379
+    },
     "test": {
       "username": "root",
       "password": "password",
