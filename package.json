@@ -8,7 +8,7 @@
     "docker_stop": "docker-compose -f docker/docker-compose.yml down",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"kill -9 $(lsof -t -i:3050) > /dev/null 2>&1\" \"npm run docker_stop\" \"npm run docker_start\" \"npm run compile\" \"npm run file\" \"npm run start\"",
-    "down": "concurrently \"npm run docker_stop\" \"kill -9 $(lsof -t -i:3050) > /dev/null 2>&1\"",    
+    "down": "concurrently \"npm run docker_stop\" \"kill -9 $(lsof -t -i:3050) > /dev/null 2>&1\"",
     "compile": "tsc -w",
     "file": "cp -r config dist",
     "start": "NODE_ENV=development JWT_SECRET=batman node_modules/.bin/nodemon --delay 5 dist/program",

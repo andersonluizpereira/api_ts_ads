@@ -18,7 +18,7 @@ import { generatedToken } from './utils/utils';
 import userService from "./services/userService";
 import Helper from "./infra/helper";
 import * as HttpStatus from "http-status";
-import { URL_BASE } from './utils/utils';
+import ConfigEnvironment from "./config/configEnvironment"
 
 class StartUp {
   public app: express.Application;
@@ -89,7 +89,7 @@ class StartUp {
     this.app.use(Auth.validate);
     this.app.route("/uploads/:email").post(uploads.single("thumbnail"),async (req, res) => {
       try {
-        let url = "http://127.0.0.1:3050"
+        let url = `http://${ConfigEnvironment.ipAddress}:3050`
         console.log(url)
 
         let images = {
