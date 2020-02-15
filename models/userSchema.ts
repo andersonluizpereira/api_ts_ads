@@ -1,21 +1,19 @@
 import * as mongoose from "mongoose";
-import {isEmail} from "validator";
 
 const UserSchema = new mongoose.Schema({
   name: { type: String },
   email: { 
-    type: String, 
+    type: String,
+    trim: true,
+    lowercase: true, 
     unique: true,
-    required: true,
-    validate: {
-      validator: isEmail
-    }
+    required: true
   },
   password: { type: String },
   photo: { type: String },
   createdAt: { type: Date },
   updatedAt: { type: Date },
-  active: { type: Boolean }
+  active: { type: Boolean, default: false }
 });
 
 export default UserSchema;

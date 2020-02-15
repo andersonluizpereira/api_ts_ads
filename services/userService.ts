@@ -1,9 +1,18 @@
 import UserRepository from "../repository/userRepository";
+import { isEmail } from "validator";
 
 class UserService {
 
+  async hasValidEmail(user) {
+    return await isEmail(user.email);
+  }
+
+  async search(user) {
+    return await UserRepository.find({email: user.email});
+  }
+  
   async login(user) {
-    return await UserRepository.findOne({
+    return await UserRepository.find({
       'email': user.email,
       'password': user.password
     });
@@ -12,7 +21,6 @@ class UserService {
   async create(user) {
     user.createdAt = new Date()
     user.updatedAt = new Date()
-    user.active = true
     return await UserRepository.create(user);
   }
 

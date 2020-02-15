@@ -69,21 +69,33 @@ class StartUp {
       }
     });
 
-    this.app.route("/api/v1/user").post(async (req, res) => {
-      try {
-        await userService.create(req.body)
-          .then(user =>
-
-              res.json({
-                status: HttpStatus.OK,
-                message: "Usuário cadastrado com sucesso!",
-                data: req.body
-              })
-          )
-          .catch(error => console.error.bind(console, `Error ${error}`));
-      } catch (error) {
-        console.log(error);
-      }
+    this.app.route("/api/v1/user").post(async (req, res) => {  
+        try {
+          const userSearchIsValid = await userService.hasValidEmail(req.body);
+          if(!userSearchIsValid) return res.json({
+            status: HttpStatus.BAD_REQUEST,
+            message: "Usuário possuí email inválido!",
+            data: req.body
+          })
+          const userSearch = await userService.search(req.body);
+          
+          if (userSearch.length !==0) return res.json({
+            status: HttpStatus.OK,
+            message: "Usuário já possuí cadastro!",
+            data: req.body
+          })
+            await userService.create(req.body)
+              .then(user =>
+                  res.json({
+                    status: HttpStatus.OK,
+                    message: "Usuário cadastrado com sucesso!",
+                    data: req.body
+                  })
+              )
+              .catch(error => console.error.bind(console, `Error ${error}`));
+        } catch (error) {
+          console.log(error);
+        } 
     });
 
     this.app.use(Auth.validate);
