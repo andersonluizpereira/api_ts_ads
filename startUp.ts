@@ -19,6 +19,8 @@ import userService from "./services/userService";
 import Helper from "./infra/helper";
 import * as HttpStatus from "http-status";
 import ConfigEnvironment from "./config/configEnvironment"
+const swaggerUi = require("swagger-ui-express");
+import * as specs from './swagger';
 
 class StartUp {
   public app: express.Application;
@@ -51,6 +53,7 @@ class StartUp {
     this.enableCors();
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use("/api/api-docs", swaggerUi.serve, swaggerUi.setup(specs.default));
     this.app.use(compression());
   }
 
