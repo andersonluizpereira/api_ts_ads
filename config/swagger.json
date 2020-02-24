@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "version": "1.0.0",
-        "title": "Seans-TypeScript-NodeJS-CRUD-REST-API-Boilerplate",
+        "title": "Api TS ADS create api TypeScript with nodejs",
         "description": "A minimal and easy to follow example of what you need to create a CRUD style API in NodeJs using TypeScript",
         "license": {
             "name": "MIT",
@@ -75,6 +75,22 @@
                     },
                     "400": {
                         "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/news/export/tocsv": {
+            "get": {
+                "tags": [
+                    "news"
+                ],
+                "summary": "Get all news in system and export to csv",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/news"
+                        }
                     }
                 }
             }
