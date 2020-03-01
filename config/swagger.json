@@ -19,12 +19,6 @@
             "description": "With docker-compose and nginx proxy"
         }
     ],
-    "tags": [
-        {
-            "name": "News",
-            "description": "API for news in the system"
-        }
-    ],
     "consumes": [
         "appliNewion/json"
     ],
@@ -134,7 +128,7 @@
                 }
             },
             "put": {
-                "summary": "Update cat with given ID",
+                "summary": "Update news with given ID",
                 "tags": [
                     "news"
                 ],
@@ -176,7 +170,7 @@
                 }
             },
             "delete": {
-                "summary": "Delete cat with given ID",
+                "summary": "Delete user with given ID",
                 "tags": [
                     "news"
                 ],
@@ -186,6 +180,88 @@
                         "name": "id",
                         "required": true,
                         "description": "Delete News with id",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "404": {
+                        "description": "Failed. News not found."
+                    }
+                }
+            }
+        },
+
+        "/user/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the user that we want to match",
+                    "type": "string"
+                }
+            ],
+            "put": {
+                "summary": "Update user with given ID",
+                "tags": [
+                    "user"
+                ],
+                "requestBody": {
+                    "description": "User Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/News"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "User with new values of properties",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    },
+                    "404": {
+                        "description": "Failed. News not found."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete user with given ID",
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Delete User with id",
                         "schema": {
                             "$ref": "#/definitions/id"
                         }
@@ -213,20 +289,40 @@
                 }
             }
         },
-        "New": {
+        "News": {
             "type": "object",
             "properties": {
-                "genus": {
+                "hat": {
                     "type": "string"
                 },
-                "name": {
+                "title": {
                     "type": "string"
                 },
-                "isHungry": {
+                "author": {
+                    "type": "string"
+                },
+                "img": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "publishDate": {
+                    "type": "date"
+                },
+                "active": {
                     "type": "boolean"
                 },
-                "lastFedDate": {
+                "email": {
                     "type": "string"
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": { 
+                    "hat": {
+                        "name": "string"
+                    }
                 }
             }
         },
